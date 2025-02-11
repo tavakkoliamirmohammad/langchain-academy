@@ -34,8 +34,17 @@ def divide(a: int, b: int) -> float:
     return a / b
 
 
+def power(a: int, b: int) -> float:
+    """Power a to b.
+    Args:
+        a: first int
+        b: second int
+    """
+    return a ** b
+
+
 # List of tools
-tools = [add, multiply, divide]
+tools = [add, multiply, divide, power]
 
 # Replace 'llama3.2' with your model name
 llm = ChatOllama(model="llama3.2")
@@ -44,7 +53,7 @@ llm_with_tools = llm.bind_tools(tools)
 
 # System message
 sys_msg = SystemMessage(
-    content="You are a helpful assistant tasked with performing arithmetic on a set of inputs.")
+    content="You are a helpful assistant tasked with performing arithmetic on a set of inputs. if you cant solve the problem, respond with 'I can't solve this'.")
 
 # Define the assistant node
 
